@@ -1,7 +1,7 @@
 import React from 'react'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
-import FabioHeroImage from '../images/fabio_fiestas.jpg'
+import FabioHeroImage from '../images/fabio_fiestas_hero.jpg'
 import Image from 'next/image'
 import Link from 'next/link'
 
