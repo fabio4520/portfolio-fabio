@@ -16,7 +16,8 @@ export default function Header({}: Props) {
         animate={{
           x: 0,
           opacity: 1,
-          scale: 1
+          scale: 1,
+          borderRadius: ["20%", "20%", "50%", "80%", "20%"]
         }}
         transition = {{
           duration: 1.5
@@ -25,15 +26,15 @@ export default function Header({}: Props) {
         {/* Social icons */}
         <SocialIcon
           url='https://www.linkedin.com/in/fabio-fiestas/'
-          fgColor='gray'
+          fgColor='rgb(229, 198, 135)'
           bgColor='transparent'
         />
         <SocialIcon url='https://www.instagram.com/fabio4520/'
-          fgColor='gray'
+          fgColor='rgb(229, 198, 135)'
           bgColor='transparent'
         />
         <SocialIcon url='https://github.com/fabio4520'
-          fgColor='gray'
+          fgColor='rgb(229, 198, 135)'
           bgColor='transparent'
         />
       </motion.div>
@@ -53,14 +54,14 @@ export default function Header({}: Props) {
         transition={{
           duration: 1.5
         }}
-        className='flex flex-row items-center text-gray-300 cursor-pointer'>
+        className='flex flex-row items-center text-[#E5C687] cursor-pointer'>
         <SocialIcon
           className='cursor-pointer'
           network='email'
-          fgColor='gray'
+          fgColor='rgb(229, 198, 135)'
           bgColor='transparent'
         />
-        <p className='uppercase hidden md:inline-flex text-sm text-gray-400'>Let&apos;s work together!</p>
+        <p className='uppercase hidden md:inline-flex text-sm text-[#E5C687]'>Let&apos;s work together!</p>
       </motion.div>
     </header>
   )
