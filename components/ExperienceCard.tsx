@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 type Props = {}
 
@@ -21,26 +22,32 @@ export default function ExperienceCard({}: Props) {
             <h4 className='text-3xl font-light'>Rails developer junior</h4>
             <p className='font-bold text-xl mt-1'>SmartFit</p>
           </div>
-          <div className='flex space-x-2 my-2'>
-          <img
-            className='h-7 w-7 rounded-full'
-            src="https://camo.githubusercontent.com/fb369e3a940701ea56e03aa4dacd7385d141734c3d97258234c4fb84256468d9/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f727562792f727562792d6f726967696e616c2e737667"
-            alt="ruby"
-          />
-          <img
-            className='h-7 w-7 rounded-full'
-            src="https://camo.githubusercontent.com/fb369e3a940701ea56e03aa4dacd7385d141734c3d97258234c4fb84256468d9/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f727562792f727562792d6f726967696e616c2e737667"
-            alt="ruby"
-          />
-          <img
-            className='h-7 w-7 rounded-full'
-            src="https://camo.githubusercontent.com/fb369e3a940701ea56e03aa4dacd7385d141734c3d97258234c4fb84256468d9/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f727562792f727562792d6f726967696e616c2e737667"
-            alt="ruby"
-          />
-          
-          {/* tech used */}
-          {/* tech used */}
-        </div>
+          <div className='flex gap-x-2'>
+            <Image
+              src="https://abrudz.github.io/logos/Ruby.svg"
+              alt="ruby"
+              height={28}
+              width={28}
+            />
+            <Image
+              src="https://abrudz.github.io/logos/Ruby.svg"
+              alt="ruby"
+              height={28}
+              width={28}
+            />
+            <Image
+              src="https://abrudz.github.io/logos/Ruby.svg"
+              alt="ruby"
+              height={28}
+              width={28}
+            />
+            <Image
+              src="https://abrudz.github.io/logos/Ruby.svg"
+              alt="ruby"
+              height={28}
+              width={28}
+            />
+          </div>
         </div>
         
         <p className='uppercase py-2 text-gray-400'>Started work... - Ended...</p>
