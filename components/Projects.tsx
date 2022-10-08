@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link';
 
 type Props = {}
 
@@ -22,6 +23,22 @@ export default function Projects({ }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               src="https://mellifluous-madeleine-455192.netlify.app/assets/img/tweetable%20individual.png"
               className='max-w-lg md:max-w-md sm:max-w-sm' alt="" />
+            <div className='space-x-10'>
+              <Link href="">
+                <button
+                  type='submit'
+                  className='bg-[#f7ab0a] py-2 px-5 rounded-md text-black font-bold text-lg'>
+                    View source code
+                  </button>
+              </Link>
+              <Link href="">
+                <button
+                  type='submit'
+                  className='bg-[#f7ab0a] py-2 px-5 rounded-md text-black font-bold text-lg'>
+                    View website
+                  </button>
+              </Link>
+            </div>
             <div>
               <h4 className='text-4xl font-semibold text-center'>
                 <span className='underline decoration-[#F7AB0A]/50'>
