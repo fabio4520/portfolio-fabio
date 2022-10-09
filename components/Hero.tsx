@@ -24,7 +24,7 @@ export default function Hero({ }: Props) {
         <motion.img
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{duration: 1.2}}
+          transition={{duration: 1.5}}
           src='https://i.im.ge/2022/10/09/1G7f8a.fabio-fiestas-hero.jpg'
           className="rounded-full h-44 w-48 object-cover"
           alt='Fabio Fiestas' />

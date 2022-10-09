@@ -86,9 +86,6 @@ const experiences = [
       },
       {
         "item": "English customer service"
-      },
-      {
-        "item": "I also configured an email report from Sql server and create a landing in php with no knowledge in this programming language at the first."
       }
     ]
   },
