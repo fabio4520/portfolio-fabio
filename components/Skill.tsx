@@ -5,9 +5,10 @@ type Props = {
   directionLeft?: boolean;
   imageLink: string;
   proficiency: number;
+  alt: string
 }
 
-export default function Skill({ directionLeft, imageLink, proficiency }: Props) {
+export default function Skill({ directionLeft, imageLink, proficiency, alt }: Props) {
   return (
     <div className='group relative flex cursor-pointer text-center'>
       <motion.img
@@ -18,6 +19,7 @@ export default function Skill({ directionLeft, imageLink, proficiency }: Props) 
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, x: 0 }}
         src={imageLink}
+        alt={ alt }
         className='rounded-full border border-gray-500 object-cover w-24 h-24 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out'
       />
 
