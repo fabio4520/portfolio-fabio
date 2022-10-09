@@ -1,7 +1,6 @@
 import React from 'react'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
-import FabioHeroImage from '../images/fabio_fiestas_hero.jpg'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -17,13 +16,12 @@ export default function Hero({ }: Props) {
     loop: true,
     delaySpeed: 2000
   })
-  // Sky is the limit. You never live same experience twice.
-  // Frank McCourt
   return (
     <div className='text-white h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
       <BackgroundCircles />
       <div className='h-44 w-44 mx-auto relative'>
-        <Image src={FabioHeroImage}
+        <Image
+          src='https://i.im.ge/2022/10/09/1G7f8a.fabio-fiestas-hero.jpg'
           className="rounded-full"
           layout='fill'
           objectFit='cover'

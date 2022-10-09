@@ -10,7 +10,8 @@ const nextConfig = {
       'git-scm.com',
       'cdn4.iconfinder.com',
       'upload.wikimedia.org',
-      'cdn-icons-png.flaticon.com'
+      'cdn-icons-png.flaticon.com',
+      'i.im.ge'
     ]
   }
 }
