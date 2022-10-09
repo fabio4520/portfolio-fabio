@@ -22,7 +22,7 @@ export default function Project( project: ProjectsType ) {
         whileInView={{ opacity: 1, y: 0 }}
         src={ project.img }
         className='max-w-lg md:max-w-md sm:max-w-sm' alt="" />
-      <div className='space-x-10 mt-5 text-center'>
+      <div className='space-x-6 mt-5 text-center'>
         <Link href={ project.link_code }>
           <button
             type='submit'
