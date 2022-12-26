@@ -1,20 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link';
-import projects from '../data/projects'
+// import projects from '../data/projects'
 import Project from './Project';
+import { Project as ProjectType } from '../typings';
 
-type Props = {}
-
-type ProjectsType = {
-  name: string,
-  img: string,
-  info: string,
-  link_code: string,
-  link_web: string
+type Props = {
+  projects: ProjectType[];
 }
 
-export default function Projects({ }: Props) {
+
+export default function Projects({ projects }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,14 +24,14 @@ export default function Projects({ }: Props) {
           projects.map((project, i) => (
             <div
               className='w-screen snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen flex-shrink-0'
-              key={i}>
-              <Project {...project}/>
+              key={project._id}>
+              <Project project={ project } />
               <div>
                 <h4 className='text-4xl font-semibold text-center'>
                   <span className='underline decoration-[#F7AB0A]/50'>
-                    Case Study {i+1} of {projects.length}:</span> {project.name}
+                    Case Study {i+1} of {projects.length}:</span> {project.title}
                 </h4>
-                <p className='text-lg text-center md:text-left mt-2'>{ project.info }</p>
+                <p className='text-lg text-center md:text-left mt-2'>{ project.summary }</p>
               </div>
             </div>
         ))

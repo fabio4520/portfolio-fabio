@@ -3,14 +3,17 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { PageInfo } from '../typings'
+import { urlFor } from '../sanity'
 
+type Props = {
+  pageInfo: PageInfo
+}
 
-type Props = {}
-
-export default function Hero({ }: Props) {
+export default function Hero({ pageInfo }: Props) {
   const [text, count] = useTypewriter({
     words: [
-      "Hi! I'm Fabio Fiestas",
+      `Hi! I'm ${pageInfo?.name}`,
       "Guy-who-loves-to-dream.tsx",
       "<ButLovesCoffeeMore/>"
     ],
@@ -24,13 +27,12 @@ export default function Hero({ }: Props) {
         <motion.img
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{duration: 1.5}}
-          src='https://i.im.ge/2022/10/09/1G7f8a.fabio-fiestas-hero.jpg'
-          className="rounded-full h-44 w-48 object-cover"
-          alt='Fabio Fiestas' />
+          transition={{ duration: 1.5 }}
+          src={urlFor(pageInfo?.heroImage).url()} className="rounded-full h-44 w-48 object-cover"
+          alt={ pageInfo?.name} />
       </div>
       <div className='z-30'>
-        <h2 className='text-gray-500 text-sm uppercase pb-2 tracking-[12px]'>Full stack developer</h2>
+        <h2 className='text-gray-500 text-sm uppercase pb-2 tracking-[12px]'>{ pageInfo.role}</h2>
         <h1 className='text-4xl lg:text-5xl font-semibold px-10'>
           <span className='mr-3'>{text}</span>
           <Cursor cursorColor='#F7AB0A'/>
@@ -42,14 +44,12 @@ export default function Hero({ }: Props) {
           <div className="h-3 text-3xl text-left">
           &rdquo;
           </div>
-          <p className='px-4 text-center'>
-            Sky is the limit. You never live same experience twice.
-          </p>
+          <p className='px-4 text-center'>{ pageInfo?.phrase }</p>
           <div className="h-3 text-3xl text-right">
           &rdquo;
           </div>
         </div>
-        <cite>- Frank McCourt</cite>
+        <cite>- { pageInfo?.author }</cite>
       </blockquote>
       
       <div className='pt-1 z-30'>
@@ -71,3 +71,4 @@ export default function Hero({ }: Props) {
     </div>
   )
 }
+

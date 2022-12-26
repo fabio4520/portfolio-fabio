@@ -4,14 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      'abrudz.github.io',
-      'www.logo.wine',
-      'seeklogo.com',
-      'git-scm.com',
-      'cdn4.iconfinder.com',
-      'upload.wikimedia.org',
-      'cdn-icons-png.flaticon.com',
-      'i.im.ge'
+      'cdn.sanity.io'
     ]
   }
 }
