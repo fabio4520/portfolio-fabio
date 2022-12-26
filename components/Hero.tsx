@@ -74,7 +74,7 @@ export default function Hero({ }: Props) {
 
 export async function getStaticProps() {
   const pageInfo:any = await client.fetch(`*[_type == "pet"]`);
-
+  const socials:any = await client.fetch(`*[_type == "social"]`)
   return {
     props: {
       pageInfo
