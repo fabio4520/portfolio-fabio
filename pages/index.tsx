@@ -9,8 +9,18 @@ import Skills from '../components/Skills'
 import WorkExperience from '../components/WorkExperience'
 import { ArrowUpCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
+import { client } from '../sanity'
+import { Experience, PageInfo, Project, Skill, Social } from '../typings'
 
-const Home: NextPage = () => {
+type Props = {
+  pageInfo: PageInfo;
+  experiences: Experience[];
+  skills: Skill[];
+  projects: Project[];
+  socials: Social[];
+}
+
+const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   return (
     <div className='bg-[rgb(18,22,25)] h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80'>
       <Head>
@@ -18,7 +28,7 @@ const Home: NextPage = () => {
       </Head>
       
       {/* Header */}
-      <Header/>
+      <Header socials={ socials } />
 
       {/* Hero */}
       <section id="hero" className='snap-center'>
@@ -65,3 +75,32 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+
+export async function getStaticProps() {
+  const pageInfo:PageInfo = await client.fetch(`*[_type == "pageInfo"][0]`);
+  const socials: Social[] = await client.fetch(`*[_type == "social"]`)
+  const skills: Skill[] = await client.fetch(`*[_type == "skill"]`)
+  const projects: Project[] = await client.fetch(`
+  *[_type == "project"]{
+    ...,
+    technologies[]->
+  }
+  `)
+  const experiences: Experience[] = await client.fetch(`
+  *[_type == "experience"]{
+    ...,
+    technologies[]->
+  }
+  `)
+  
+  return {
+    props: {
+      pageInfo,
+      socials,
+      skills,
+      projects,
+      experiences
+    }
+  };
+}

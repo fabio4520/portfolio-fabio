@@ -3,7 +3,6 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { client } from '../sanity'
 
 type Props = {}
 
@@ -72,12 +71,3 @@ export default function Hero({ }: Props) {
   )
 }
 
-export async function getStaticProps() {
-  const pageInfo:any = await client.fetch(`*[_type == "pet"]`);
-  const socials:any = await client.fetch(`*[_type == "social"]`)
-  return {
-    props: {
-      pageInfo
-    }
-  };
-}
