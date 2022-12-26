@@ -1,18 +1,15 @@
 import React from 'react'
 import { motion }  from 'framer-motion'
 import Skill from './Skill'
-import skills from '../data/skills'
+import { Skill as SkillType } from '../typings';
+import { urlFor } from '../sanity';
+// import skills from '../data/skills'
 
-type Props = {}
-
-type SkillType = {
-  name: string,
-  src: string,
-  proficiency: string,
-  directionLeft: boolean
+type Props = {
+  skills: SkillType[];
 }
 
-export default function Skills({ }: Props) {
+export default function Skills({ skills }: Props) {
   return (
     <div>
       <motion.div
@@ -24,15 +21,25 @@ export default function Skills({ }: Props) {
 
         <h3 className='absolute top-36 uppercase tracking-[3px] text-gray-500 text-sm'>Hover a skill for currently proficiency</h3>
 
-        <div className='grid grid-cols-4 gap-5 pt-14'>
+        <div className='grid grid-cols-5 gap-5 pt-14'>
           {
-            skills.map((skill, i) => (
+            skills?.slice(0, skills.length / 2).map((skill) => (
               <Skill
-                key={i}
-                proficiency={skill.proficiency}
-                imageLink={skill.src}
-                alt={skill.name}
-                directionLeft={ skill.directionLeft }
+                key={skill._id}
+                proficiency={skill.progress}
+                imageLink={urlFor(skill.image).url()}
+                alt={skill.title}
+              />
+            ))
+          }
+          {
+            skills?.slice( skills.length / 2, skills.length).map((skill) => (
+              <Skill
+                key={skill._id}
+                proficiency={skill.progress}
+                imageLink={urlFor(skill.image).url()}
+                alt={skill.title}
+                directionLeft={true}
               />
             ))
           }
