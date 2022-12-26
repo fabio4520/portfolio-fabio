@@ -32,7 +32,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
 
       {/* Hero */}
       <section id="hero" className='snap-center'>
-        <Hero/>
+        <Hero pageInfo={ pageInfo } />
       </section>
 
       {/* About */}
@@ -101,6 +101,7 @@ export async function getStaticProps() {
       skills,
       projects,
       experiences
-    }
+    },
+    revalidate: 10
   };
 }
