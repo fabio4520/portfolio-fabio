@@ -11,6 +11,7 @@ import { ArrowUpCircleIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import { client } from '../sanity'
 import { Experience, PageInfo, Project, Skill, Social } from '../typings'
+import Script from 'next/script'
 
 type Props = {
   pageInfo: PageInfo;
@@ -22,7 +23,34 @@ type Props = {
 
 const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
   return (
+
+    
     <div className='bg-[rgb(18,22,25)] h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80'>
+       {/* Google tag (gtag.js) */}
+      {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE70P04YRY"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PE70P04YRY');
+      </script> */}
+      
+      {/* Google tag (gtag.js) */}
+      <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=G-PE70P04YRY`} />
+
+      <Script id='googletag' strategy="lazyOnload">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PE70P04YRY', {
+            page_path: window.location.pathname,
+            });
+        `}
+      </Script>
+            
+
       <Head>
         <title>Fabio&apos;s portfolio</title>
       </Head>
