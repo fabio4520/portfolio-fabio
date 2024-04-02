@@ -13,8 +13,30 @@ type Props = {}
 export default function ContactMe({ }: Props) {
   const {register, handleSubmit} = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (formData) => {
-    window.location.href = `mailto:fabioleofc@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. \n${formData.message}. \nEmail: ${formData.email}`;
+  // const onSubmit: SubmitHandler<Inputs> = (formData) => {
+  //   window.location.href = `mailto:fabioleofc@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. \n${formData.message}. \nEmail: ${formData.email}`;
+  // };
+
+  const onSubmit: SubmitHandler<Inputs> = async (formData) => {
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Si la solicitud fue exitosa, puedes redirigir al usuario a una página de confirmación o mostrar un mensaje de éxito.
+        console.log('Formulario enviado correctamente');
+      } else {
+        // Manejar errores si la solicitud no fue exitosa
+        console.error('Error al enviar el formulario');
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    }
   };
 
   return (
