@@ -20,6 +20,7 @@
     "react-hook-form": "^7.37.0",
     "react-simple-typewriter": "^4.0.5",
     "react-social-icons": "^5.15.0",
+    "react-toastify": "^10.0.5",
     "resend": "^3.2.0"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { showToast } from '../helpers/toastService'
 
 type Inputs = {
   name: string,
@@ -29,7 +30,7 @@ export default function ContactMe({ }: Props) {
 
       if (response.ok) {
         // Si la solicitud fue exitosa, puedes redirigir al usuario a una página de confirmación o mostrar un mensaje de éxito.
-        console.log('Formulario enviado correctamente');
+        showToast("Correo enviado exitosamente!", "success")
       } else {
         // Manejar errores si la solicitud no fue exitosa
         console.error('Error al enviar el formulario');
