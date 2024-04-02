@@ -1,6 +1,7 @@
 import React from 'react'
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { showToast } from '../helpers/toastService'
 
 type Inputs = {
   name: string,
@@ -13,8 +14,30 @@ type Props = {}
 export default function ContactMe({ }: Props) {
   const {register, handleSubmit} = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (formData) => {
-    window.location.href = `mailto:fabioleofc@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. \n${formData.message}. \nEmail: ${formData.email}`;
+  // const onSubmit: SubmitHandler<Inputs> = (formData) => {
+  //   window.location.href = `mailto:fabioleofc@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}. \n${formData.message}. \nEmail: ${formData.email}`;
+  // };
+
+  const onSubmit: SubmitHandler<Inputs> = async (formData) => {
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Si la solicitud fue exitosa, puedes redirigir al usuario a una página de confirmación o mostrar un mensaje de éxito.
+        showToast("Correo enviado exitosamente!", "success")
+      } else {
+        // Manejar errores si la solicitud no fue exitosa
+        console.error('Error al enviar el formulario');
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    }
   };
 
   return (
@@ -42,8 +65,8 @@ export default function ContactMe({ }: Props) {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-2 w-fit mx-auto'>
-          <div className='flex space-x-2'>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-2 w-full mx-auto'>
+          <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
             <input {...register('name')} type="text" className='contactInput' placeholder='Name'/>
             <input {...register('email')} type="email" className='contactInput' placeholder='Email'/>
           </div>
