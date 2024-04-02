@@ -17,7 +17,7 @@ export default function ExperienceCard({ experience}: Props) {
   const stringStartDate = months[start_date.getMonth()] + ", " + start_date.getFullYear()
   const stringEndDate = experience.iscurrentlyWorkingHere ? "Present" : months[end_date.getMonth()] + ", " + end_date.getFullYear()
   return (
-    <article className='flex flex-col rounded-lg items-center space-y-2 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center mt-10 bg-[#43586939] p-7 hover:opacity-100 opacity-60 transition-opacity duration-200 overflow-hidden'>
+    <article className='flex flex-col rounded-lg items-center space-y-2 flex-shrink-0 w-[300px] md:w-[600px] xl:w-[900px] h-[650px] md:h-full snap-center mt-10 bg-[#43586939] p-7 hover:opacity-100 opacity-60 transition-opacity duration-200 overflow-hidden'>
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.5 }}
@@ -28,12 +28,13 @@ export default function ExperienceCard({ experience}: Props) {
         title={experience?.company}
       />
 
-      <div className='px-0 md:px-10'>
-        <div className='flex justify-between'>
+      <div className='px-0 md:px-10 overflow-auto'>
+        <div className='flex flex-col md:flex-row gap-3 justify-between'>
           <div>
             <h4 className='text-3xl font-light'>{ experience?.jobTitle }</h4>
             <p className='font-bold text-xl mt-1'>{ experience?.company }</p>
           </div>
+          {/* technologies */}
           <div className='flex gap-x-2'>
             {
               experience.technologies.map((tech, i) => (
@@ -53,7 +54,7 @@ export default function ExperienceCard({ experience}: Props) {
         
         <p className='uppercase py-2 text-gray-400'>{ stringStartDate } - { stringEndDate }</p>
 
-        <ul className='list-disc space-y-1 ml-5 text-lg'>
+        <ul className='list-disc space-y-1 ml-4 text-lg'>
           {
             experience.points.map((dutie, i) => (
               <li key={i}>{ dutie }</li>
