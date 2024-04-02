@@ -11,6 +11,9 @@ type Props = {
 
 
 export default function Projects({ projects }: Props) {
+  projects.sort(function(a, b) {
+    return new Date(b._createdAt).getTime() - new Date(a._createdAt).getTime();
+  });  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,15 +26,15 @@ export default function Projects({ projects }: Props) {
         {
           projects.map((project, i) => (
             <div
-              className='w-screen snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen flex-shrink-0'
+              className=' w-screen snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen flex-shrink-0'
               key={project._id}>
               <Project project={ project } />
-              <div>
-                <h4 className='text-4xl font-semibold text-center'>
+              <div className='overflow-y-auto max-h-72 md:h-auto md:overflow-y-visible'>
+                <h4 className=' text-lg md:text-4xl font-semibold text-center'>
                   <span className='underline decoration-[#F7AB0A]/50'>
                     Case Study {i+1} of {projects.length}:</span> {project.title}
                 </h4>
-                <p className='text-lg text-center md:text-left mt-2'>{ project.summary }</p>
+                <p className='md:text-lg text-left mt-2'>{ project.summary }</p>
               </div>
             </div>
         ))
